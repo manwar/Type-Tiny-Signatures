@@ -22,5 +22,7 @@ DESCRIPTION
     The method and function signatures can be configured to incorporate the
     user-defined type constraints in routine parameter list validation by
     passing the library package name as an argument to the
-    Type::Tiny::Signatures usage declaration.
+    Type::Tiny::Signatures usage declaration. Please note, the
+    Function::Parameters pragma will be loaded using the defaults (i.e. not
+    in strict-mode).
 

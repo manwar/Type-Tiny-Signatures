@@ -1,12 +1,12 @@
 # NAME
 
-Type::Tiny::Signatures - Method/Function Signatures using Type::Tiny Constraints
+Type::Tiny::Signatures - Method/Function Signatures w/Type::Tiny Constraints
 
 [![Build Status](https://travis-ci.org/alnewkirk/Type-Tiny-Signatures.png?branch=master)](https://travis-ci.org/alnewkirk/Type-Tiny-Signatures)
 
 # VERSION
 
-version 0.01
+version 0.02
 
 # SYNOPSIS
 
@@ -19,8 +19,8 @@ version 0.01
 
 # DESCRIPTION
 
-This module uses [Function::Parameters](https://metacpan.org/pod/Function::Parameters) to extends Perl with keywords that let
-you define methods and functions with parameter lists which can be validated
+This module uses [Function::Parameters](https://metacpan.org/pod/Function::Parameters) to extends Perl with keywords that
+let you define methods and functions with parameter lists which can be validated
 using [Type::Tiny](https://metacpan.org/pod/Type::Tiny) type constraints. The type constraints can be provided by
 the Type::Tiny standard library, [Types::Standard](https://metacpan.org/pod/Types::Standard), or any supported
 user-defined type library which can be a [Moose](https://metacpan.org/pod/Moose), [MooseX::Type](https://metacpan.org/pod/MooseX::Type),
@@ -32,7 +32,8 @@ user-defined type library which can be a [Moose](https://metacpan.org/pod/Moose)
 The method and function signatures can be configured to incorporate the
 user-defined type constraints in routine parameter list validation by passing
 the library package name as an argument to the Type::Tiny::Signatures usage
-declaration.
+declaration. Please note, the Function::Parameters pragma will be loaded using
+the defaults (i.e. not in strict-mode).
 
 # AUTHOR
 
