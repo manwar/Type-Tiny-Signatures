@@ -6,7 +6,7 @@ Type::Tiny::Signatures - Method/Function Signatures w/Type::Tiny Constraints
 
 # VERSION
 
-version 0.02
+version 0.03
 
 # SYNOPSIS
 
@@ -28,6 +28,10 @@ user-defined type library which can be a [Moose](https://metacpan.org/pod/Moose)
 
     use Type::Tiny;
     use Type::Tiny::Signatures qw(MyApp::Types);
+
+    method identify (Str $name, SSN $number) {
+        print "identifying $name using SSN $number\n";
+    }
 
 The method and function signatures can be configured to incorporate the
 user-defined type constraints in routine parameter list validation by passing

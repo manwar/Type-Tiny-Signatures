@@ -49,6 +49,10 @@ L<MouseX::Type>, or L<Type::Library> library.
     use Type::Tiny;
     use Type::Tiny::Signatures qw(MyApp::Types);
 
+    method identify (Str $name, SSN $number) {
+        print "identifying $name using SSN $number\n";
+    }
+
 The method and function signatures can be configured to incorporate the
 user-defined type constraints in routine parameter list validation by passing
 the library package name as an argument to the Type::Tiny::Signatures usage
