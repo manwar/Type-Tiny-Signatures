@@ -1,6 +1,7 @@
 Changelog for Type-Tiny-Signatures
 
-0.03 2015-06-21T09:50:48
+0.03 2015-06-21T09:54:41
+ - Added support for Function::Parameters strict mode and customization.
  - Updated POD.
 
 0.02 2015-06-15T00:00:50
