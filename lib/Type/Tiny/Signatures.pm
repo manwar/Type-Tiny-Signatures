@@ -9,8 +9,8 @@ require Function::Parameters;
 require Type::Registry;
 require Type::Tiny;
 
-our $CALLER = caller;
-our @CONFIG = 'Types::Standard';
+our $CALLER   = caller;
+our @DEFAULTS = 'Types::Standard';
 
 # VERSION
 
@@ -19,9 +19,11 @@ unshift @Function::Parameters::type_reifiers => sub {
 };
 
 sub import {
-    my @LIBRARIES = map { ref $_ ? @$_ : $_ } splice @_, 1;
-    Type::Registry->for_class($CALLER)->add_types($_) for @CONFIG, @LIBRARIES;
-    Function::Parameters->import;
+    my @ARGUMENTS = map 'ARRAY' eq ref $_ ? @$_ : $_, splice @_, 1;
+    my @LIBRARIES = grep { !ref && !/^:/ } @ARGUMENTS;
+    my @CONFIG    = grep { ref  ||  /^:/ } @ARGUMENTS;
+    Type::Registry->for_class($CALLER)->add_types($_) for @DEFAULTS, @LIBRARIES;
+    Function::Parameters->import(@CONFIG);
 }
 
 1;
@@ -53,11 +55,20 @@ L<MouseX::Type>, or L<Type::Library> library.
         print "identifying $name using SSN $number\n";
     }
 
-The method and function signatures can be configured to incorporate the
-user-defined type constraints in routine parameter list validation by passing
-the library package name as an argument to the Type::Tiny::Signatures usage
-declaration. Please note, the Function::Parameters pragma will be loaded using
-the defaults (i.e. not in strict-mode).
+The method and function signatures can be configured to validate user-defined
+type constraints by passing the user-defined type library package name as an
+argument to the Type::Tiny::Signatures usage declaration. The default behavior
+configures the Function::Parameters pragma using its defaults, i.e. strict-mode
+disabled. Please note, you can pass all the acceptable Function::Parameters
+import options to the Type::Tiny::Signatures usage declaration to configure the
+underlying Function::Parameters pragma to suit your needs.
+
+    use Type::Tiny;
+    use Type::Tiny::Signatures ':strict' => qw(MyApp::Types);
+
+    method identify (Str $name, SSN $number) {
+        print "identifying $name using SSN $number\n";
+    }
 
 =cut
 

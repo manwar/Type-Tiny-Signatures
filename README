@@ -23,10 +23,19 @@ DESCRIPTION
             print "identifying $name using SSN $number\n";
         }
 
-    The method and function signatures can be configured to incorporate the
-    user-defined type constraints in routine parameter list validation by
-    passing the library package name as an argument to the
-    Type::Tiny::Signatures usage declaration. Please note, the
-    Function::Parameters pragma will be loaded using the defaults (i.e. not
-    in strict-mode).
+    The method and function signatures can be configured to validate
+    user-defined type constraints by passing the user-defined type library
+    package name as an argument to the Type::Tiny::Signatures usage
+    declaration. The default behavior configures the Function::Parameters
+    pragma using its defaults, i.e. strict-mode disabled. Please note, you
+    can pass all the acceptable Function::Parameters import options to the
+    Type::Tiny::Signatures usage declaration to configure the underlying
+    Function::Parameters pragma to suit your needs.
+
+        use Type::Tiny;
+        use Type::Tiny::Signatures ':strict' => qw(MyApp::Types);
+    
+        method identify (Str $name, SSN $number) {
+            print "identifying $name using SSN $number\n";
+        }
 
