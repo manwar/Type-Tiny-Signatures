@@ -19,13 +19,17 @@ unshift @Function::Parameters::type_reifiers => sub {
 };
 
 sub import {
-    my (@CONFIG, @LIBRARIES);
+    my (@ARGUMENTS, @LIBRARIES);
+
     for (map 'ARRAY' eq ref $_ ? @$_ : $_, splice @_, 1) {
-        push @LIBRARIES, $_ and next if !ref && !/^:/;
-        push @CONFIG,    $_;
+        push @LIBRARIES => $_ and next if !ref && !/^:/;
+        push @ARGUMENTS => $_;
     }
+
     Type::Registry->for_class($CALLER)->add_types($_) for @DEFAULTS, @LIBRARIES;
-    Function::Parameters->import(@CONFIG);
+    Function::Parameters->import(@ARGUMENTS);
+
+    return;
 }
 
 1;

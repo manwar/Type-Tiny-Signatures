@@ -21,7 +21,7 @@ my %WriteMakefileArgs = (
     "Function::Parameters" => "1.0605",
     "Type::Tiny" => "1.000005"
   },
-  "VERSION" => "0.04",
+  "VERSION" => "0.05",
   "test" => {
     "TESTS" => "t/*.t"
   }
