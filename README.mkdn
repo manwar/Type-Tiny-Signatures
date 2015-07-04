@@ -6,7 +6,7 @@ Type::Tiny::Signatures - Method/Function Signatures w/Type::Tiny Constraints
 
 # VERSION
 
-version 0.03
+version 0.04
 
 # SYNOPSIS
 

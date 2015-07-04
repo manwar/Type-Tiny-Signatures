@@ -19,9 +19,11 @@ unshift @Function::Parameters::type_reifiers => sub {
 };
 
 sub import {
-    my @ARGUMENTS = map 'ARRAY' eq ref $_ ? @$_ : $_, splice @_, 1;
-    my @LIBRARIES = grep { !ref && !/^:/ } @ARGUMENTS;
-    my @CONFIG    = grep { ref  ||  /^:/ } @ARGUMENTS;
+    my (@CONFIG, @LIBRARIES);
+    for (map 'ARRAY' eq ref $_ ? @$_ : $_, splice @_, 1) {
+        push @LIBRARIES, $_ and next if !ref && !/^:/;
+        push @CONFIG,    $_;
+    }
     Type::Registry->for_class($CALLER)->add_types($_) for @DEFAULTS, @LIBRARIES;
     Function::Parameters->import(@CONFIG);
 }
