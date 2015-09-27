@@ -1,6 +1,10 @@
 Changelog for Type-Tiny-Signatures
 
-0.05 2015-07-04T04:28:25
+0.06 2015-09-27T11:55:33
+ - Updated build requirements.
+
+0.05 2015-07-04T04:28:30
+ - v0.05
  - Refactored import.
 
 0.04 2015-07-04T01:06:53
@@ -19,4 +23,3 @@ Changelog for Type-Tiny-Signatures
 0.01 2015-06-14T13:38:27
  - v0.01
  - Initial commit.
-
